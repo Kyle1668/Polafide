@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  image_url: MyString
+  is_open: false
+  place_id: MyString
+  rating: 1.5
+  types: MyString
+
+two:
+  name: MyString
+  address: MyString
+  image_url: MyString
+  is_open: false
+  place_id: MyString
+  rating: 1.5
+  types: MyString
