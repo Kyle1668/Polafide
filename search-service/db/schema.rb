@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310202647) do
+ActiveRecord::Schema.define(version: 20180310215129) do
 
-  create_table "places", force: :cascade do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "image_url"
-    t.boolean  "is_open"
-    t.string   "place_id"
-    t.float    "rating"
-    t.string   "types"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "places", id: false, force: :cascade do |t|
+    t.string  "name"
+    t.string  "address"
+    t.string  "image_url"
+    t.boolean "is_open"
+    t.string  "place_id"
+    t.float   "rating"
+    t.string  "types"
   end
 
 end
