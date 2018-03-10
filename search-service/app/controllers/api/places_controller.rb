@@ -42,8 +42,9 @@ class Api::PlacesController < ApplicationController
             new_place = Place.new()
             new_place.name = place['name']
             new_place.address = place['formatted_address']
-            # new_place.image_url = get_photo(place['photos']['photo_reference'].to_s)
-            # new_place.is_open = place['opening_hours']['open_now'].to_boolean
+            new_place.image_url = get_photo(place['photos'][0]['photo_reference'].to_s)
+            new_place.is_open = place['opening_hours']['open_now'].to_boolean
+            new_place.place_id = place['place_id']
             new_place.rating = place['rating']
             new_place.types = place['types'][0]
             places_array.push(new_place)
@@ -55,7 +56,7 @@ class Api::PlacesController < ApplicationController
 
     def get_photo(reference)
         key = '&key=AIzaSyC_KZyErDtZ42CuFscO2l5YseWaV8MCHrQ'
-        request = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='
+        request = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference='
         request + reference + key
     end
 
