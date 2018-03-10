@@ -8,7 +8,13 @@ class Api::PlacesController < ApplicationController
             request_url =  build_request_url(params[:loc])
             json_responce = get_request_data(request_url)
             places_array = build_places_array(json_responce)
-            render json: places_array
+
+            api_responce = {
+                'resultsCount' => places_array.length,
+                'results' => places_array
+            }
+
+            render json: api_responce
         end
     end
 
