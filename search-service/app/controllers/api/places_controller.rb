@@ -42,8 +42,19 @@ class Api::PlacesController < ApplicationController
             new_place = Place.new()
             new_place.name = place['name']
             new_place.address = place['formatted_address']
-            new_place.image_url = get_photo(place['photos'][0]['photo_reference'].to_s)
-            new_place.is_open = place['opening_hours']['open_now'].to_boolean
+            
+            if place['photos']
+                new_place.image_url = get_photo(place['photos'][0]['photo_reference'].to_s)
+            else
+                new_place.image_url = 'https://cdn.touchbistro.com/wp-content/uploads/2017/08/hub-icon-1.png'
+            end
+
+            if place['opening_hours']
+                new_place.is_open = place['opening_hours']['open_now'].to_boolean
+            else
+                new_place.is_open = nil
+            end 
+            
             new_place.place_id = place['place_id']
             new_place.rating = place['rating']
             new_place.types = place['types'][0]
