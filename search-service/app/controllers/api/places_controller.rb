@@ -45,30 +45,36 @@ class Api::PlacesController < ApplicationController
         places_array = []
 
         for place in json_responce
-            new_place = Place.new()
-            new_place.name = place['name']
-            new_place.address = place['formatted_address']
-            
-            if place['photos']
-                new_place.image_url = get_photo(place['photos'][0]['photo_reference'].to_s)
-            else
-                new_place.image_url = 'https://cdn.touchbistro.com/wp-content/uploads/2017/08/hub-icon-1.png'
-            end
-
-            if place['opening_hours']
-                new_place.is_open = place['opening_hours']['open_now'].to_boolean
-            else
-                new_place.is_open = nil
-            end 
-            
-            new_place.place_id = place['place_id']
-            new_place.rating = place['rating']
-            new_place.types = place['types'][0]
+            new_place = init_new_place(place)
             places_array.push(new_place)
         end
 
         places_array
 
+    end
+
+    def init_new_place(json_data)
+        new_place = Place.new()
+        new_place.name = json_data['name']
+        new_place.address = json_data['formatted_address']
+        
+        if json_data['photos']
+            new_place.image_url = get_photo(json_data['photos'][0]['photo_reference'].to_s)
+        else
+            new_place.image_url = 'https://cdn.touchbistro.com/wp-content/uploads/2017/08/hub-icon-1.png'
+        end
+
+        if json_data['opening_hours']
+            new_place.is_open = json_data['opening_hours']['open_now'].to_boolean
+        else
+            new_place.is_open = nil
+        end 
+        
+        new_place.place_id = json_data['place_id']
+        new_place.rating = json_data['rating']
+        new_place.types = json_data['types'][0]
+        
+        new_place
     end
 
     def get_photo(reference)
