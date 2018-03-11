@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const request = require('request');
+
+const httpTest = request("http://localhost:5000/api/places?loc=\"Santa Rosa\"", (error, response, body) => {
+  console.log(JSON.parse(body))
+})
+
 class App extends Component {
   render() {
     return (
