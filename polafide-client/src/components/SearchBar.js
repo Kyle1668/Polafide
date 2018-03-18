@@ -9,14 +9,28 @@ class SearchBar extends React.Component {
         }
     }
 
+    printInput(e) {
+        console.log("state input: ", this.state.inputContent)
+    }
+
+    saveInput(e) {
+        const input = e.target.value;
+        this.setState({inputContent: input})
+    }
+
     render() {
         return (
             <div className="search-bar">
-                <div class="input-group input-group-lg">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
+                <div className="input-group input-group-lg">
+                    <span className="input-group-btn">
+                        <button className="btn btn-default" type="button" onClick={this.printInput.bind(this)}>Go!</button>
                     </span>
-                    <input type="text" class="form-control" placeholder="Enter Location"/>
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        placeholder="Enter Location" 
+                        onChange={this.saveInput.bind(this)}
+                    />
                 </div>
             </div>
         )

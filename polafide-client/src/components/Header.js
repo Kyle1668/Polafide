@@ -7,7 +7,7 @@ class Header extends React.Component {
         this.state = {
             headerText: "Polafide",
             subHeading: "Find Vegetarian Eats",
-            leafIcon: <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>
+            leafIcon: <span className="glyphicon glyphicon-leaf" aria-hidden="true"></span>
         }
     }
 
