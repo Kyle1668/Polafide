@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../images/logo.svg';
 import Header from "./Header"
+import ResultsBody from "./ResultsBody";
+
+import logo from '../images/logo.svg';
 import '../stylesheets/App.css';
 import '../stylesheets/Header.css';
 import '../stylesheets/SearchBar.css';
@@ -36,8 +38,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* {this.state.results} */}
         <Header/>
+        <ResultsBody/>
       </div>
     );
   }
