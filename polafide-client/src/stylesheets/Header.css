@@ -2,8 +2,8 @@
 
 .header {
   color: white;
-  /* background: rgba(70, 72, 82, 0.3) */
   background-blend-mode: darken;
+  font-family: Raleway;
 }
 
 .header .jumbotron {
@@ -14,6 +14,12 @@
 
 .header .jumbotron h1 {
   font-size: 100px;
+  text-shadow: black;
+}
+
+.header .jumbotron p {
+  font-weight: 600;
+  text-shadow: black;
 }
 
 .header .jumbotron .glyphicon-leaf {

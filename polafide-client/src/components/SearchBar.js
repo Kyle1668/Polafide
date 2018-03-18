@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Go!</button>
                     </span>
-                    <input type="text" class="form-control" placeholder="Search for..."/>
+                    <input type="text" class="form-control" placeholder="Enter Location"/>
                 </div>
             </div>
         )
