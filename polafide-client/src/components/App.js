@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from '../images/logo.svg';
 import Header from "./Header"
 import '../stylesheets/App.css';
-import '../stylesheets/App.scss';
+import '../stylesheets/Header.css';
+import '../stylesheets/SearchBar.css';
 
 class App extends Component {
 

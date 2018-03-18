@@ -1,0 +1,22 @@
+/* Header */
+
+.header {
+  color: white;
+  /* background: rgba(70, 72, 82, 0.3) */
+  background-blend-mode: darken;
+}
+
+.header .jumbotron {
+  background-image: url("../images/header.png");
+  background-color: black;
+  background-blend-mode: screen;
+}
+
+.header .jumbotron h1 {
+  font-size: 100px;
+}
+
+.header .jumbotron .glyphicon-leaf {
+  font-size: 30px;
+  margin-left: 10px;
+}
