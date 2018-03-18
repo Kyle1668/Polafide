@@ -1,24 +1,41 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Header from "./header"
 import './App.css';
 
-const request = require('request');
-
-const httpTest = request("http://localhost:5000/api/places?loc=\"Santa Rosa\"", (error, response, body) => {
-  console.log(JSON.parse(body))
-})
-
 class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      results: []
+    }
+  }
+
+  componentDidMount() {
+
+    const url = "http://localhost:5000/api/places?loc=\"Santa Rosa\"";
+    
+    fetch(url)
+      .then(response => response.json())
+      .then(json => {
+        
+        const results = json.results.map(place => {
+          return <li>{place.name}</li>
+        })
+
+        this.setState({
+          results: results
+        });
+
+      });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {/* {this.state.results} */}
+        <Header/>
       </div>
     );
   }
