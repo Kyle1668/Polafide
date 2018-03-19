@@ -6,11 +6,12 @@ class ResultsBody extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            places: []
+            places: this.props.places
         }
     }
 
     render() {
+        console.log(this.state.places)
         return (
             <div className="results-body">
                 <div className="container">

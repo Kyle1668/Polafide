@@ -6,6 +6,7 @@ import logo from '../images/logo.svg';
 import '../stylesheets/App.css';
 import '../stylesheets/Header.css';
 import '../stylesheets/SearchBar.css';
+import '../stylesheets/ResultsBody.css';
 
 class App extends Component {
 
@@ -15,25 +16,6 @@ class App extends Component {
       results: []
     }
   }
-
-  // componentDidMount() {
-
-  //   const url = "http://localhost:5000/api/places?loc=\"Santa Rosa\"";
-    
-  //   fetch(url)
-  //     .then(response => response.json())
-  //     .then(json => {
-        
-  //       const results = json.results.map(place => {
-  //         return <li>{place.name}</li>
-  //       })
-
-  //       this.setState({
-  //         results: results
-  //       });
-
-  //     });
-  // }
 
   render() {
     return (

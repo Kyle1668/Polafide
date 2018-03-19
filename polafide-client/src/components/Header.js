@@ -11,6 +11,12 @@ class Header extends React.Component {
         }
     }
 
+    getResults() {
+        this.setState({
+            headerText: "_"
+        })
+    }
+
     render() {
         return (
             <div className="header">
@@ -18,7 +24,7 @@ class Header extends React.Component {
                     <div className="header-content">
                         <h1>{this.state.headerText} </h1>
                         <p>{this.state.subHeading} {this.state.leafIcon}</p>
-                        <SearchBar/>
+                        <SearchBar resultsMethod={this.getResults.bind(this)}/>
                     </div>
                 </div>
             </div>

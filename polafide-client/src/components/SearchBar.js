@@ -9,15 +9,49 @@ class SearchBar extends React.Component {
         }
     }
 
+    // componentDidMount() {
+
+    //     const url = "http://localhost:5000/api/places?loc=\"Santa Rosa\"";
+        
+    //     fetch(url)
+    //       .then(response => response.json())
+    //       .then(json => {
+            
+    //         const results = json.results.map(place => {
+    //           return <li>{place.name}</li>
+    //         })
+    
+    //         this.setState({
+    //           results: results
+    //         });
+    
+    //       });
+    //   }
+
     printInput(e) {
         console.log("state input: ", this.state.inputContent)
+        const url = "http://localhost:5000/api/places?loc=\"\"" + this.state.inputContent + "\"";
+        
+        fetch(url)
+          .then(response => response.json())
+          .then(json => {
+            
+            const results = json.results.map(place => {
+              return <li>{place.name}</li>
+            })
+    
+            this.setState({
+              results: results
+            });
+    
+          });
     }
 
     saveInput(e) {
         const input = e.target.value;
         this.setState({inputContent: input})
     }
-
+    
     render() {
         return (
             <div className="search-bar">
