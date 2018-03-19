@@ -2,16 +2,13 @@ import React from "react";
 import Place from "./Place";
 
 const PlaceRow = (props) => {
+    console.log("inside", props.places)
     return (
         <div className="row places-row">
-            
-            <Place  name={props.names[1]}/>
-            <Place  name={props.names[1]}/>   
-            <Place  name={props.names[1]}/>   
-            
-            {/* {props.places.map(place => {
-                return <Place name={place.name}/>
-            })}      */}
+            {props.places.map(place => {
+                // return <Place key={place.place_id} name={place.name} address={place.address}/>
+                return <Place key={place.place_id} placeObject={place}/>
+            })}
         </div>
     )
 }

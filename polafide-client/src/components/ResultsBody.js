@@ -6,18 +6,19 @@ class ResultsBody extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            places: this.props.places
+            places: this.props.results
         }
     }
 
-    render() {
-        console.log(this.state.places)
+    render() {   
+        console.log("this.state.results: ", this.state.places)
+
         return (
             <div className="results-body">
                 <div className="container">
-                    <PlaceRow names={["place 1", "place 2"]}/>
-                    <PlaceRow names={["place 3", "place 4"]}/>
-                    <PlaceRow names={["place 5", "place 6"]}/>
+                    <PlaceRow places={this.props.results}/>
+                    {/* <PlaceRow names={["place 3", "place 4"]}/>
+                    <PlaceRow names={["place 5", "place 6"]}/> */}
                 </div>
             </div>
         )

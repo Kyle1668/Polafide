@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   updateSearchTerm(input) {
-    console.log(input)
+    console.log("input", input)
     if (input !== "") {
       this.setState({searchTerm: input});
     }
@@ -35,21 +35,21 @@ class App extends Component {
     if (input != "") {
       console.log("state input: ", input)
 
-      const url = "http://localhost:5000/api/places?loc=\"\"" + input + "\"";
+      const url = "http://localhost:5000/api/places?loc=\"" + input + "\"";
+
+      console.log(url)
 
       fetch(url)
         .then(response => response.json())
         .then(json => {
 
-          const results = json
-            .results
-            .map(place => {
+          const results = json.results.map(place => {
               return <li>{place.name}</li>
-            })
+          });
 
-          this.setState({inputContent: results});
-
-          this.props.resultsMethod
+          this.setState({results: json.results});
+          
+          console.log(this.state.results)
 
         });
     }
@@ -61,7 +61,7 @@ class App extends Component {
         <Header
           updateSearchTerm={this.updateSearchTerm.bind(this)}
           callPlacesServices={this.callPlacesServices.bind(this)}/>
-        <ResultsBody/>
+        <ResultsBody results={this.state.results}/>
       </div>
     );
   }
