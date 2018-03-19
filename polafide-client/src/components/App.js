@@ -19,7 +19,6 @@ class App extends Component {
   }
 
   updateSearchTerm(input) {
-    console.log("input", input)
     if (input !== "") {
       this.setState({searchTerm: input});
     }
@@ -28,15 +27,12 @@ class App extends Component {
   callPlacesServices() {
     
     const input = this.state.searchTerm;
-    
-    console.log("callPlacesServices")
-    console.log("input: ", input + " |")
 
     if (input != "") {
-      console.log("state input: ", input)
-
+      
       const url = "http://localhost:5000/api/places?loc=\"" + input + "\"";
 
+      console.log("state input:", input)
       console.log(url)
 
       fetch(url)
@@ -48,9 +44,6 @@ class App extends Component {
           });
 
           this.setState({results: json.results});
-          
-          console.log(this.state.results)
-
         });
     }
   }
