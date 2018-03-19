@@ -9,47 +9,10 @@ class SearchBar extends React.Component {
         }
     }
 
-    // componentDidMount() {
-
-    //     const url = "http://localhost:5000/api/places?loc=\"Santa Rosa\"";
-        
-    //     fetch(url)
-    //       .then(response => response.json())
-    //       .then(json => {
-            
-    //         const results = json.results.map(place => {
-    //           return <li>{place.name}</li>
-    //         })
-    
-    //         this.setState({
-    //           results: results
-    //         });
-    
-    //       });
-    //   }
-
-    printInput(e) {
-        console.log("state input: ", this.state.inputContent)
-        const url = "http://localhost:5000/api/places?loc=\"\"" + this.state.inputContent + "\"";
-        
-        fetch(url)
-          .then(response => response.json())
-          .then(json => {
-            
-            const results = json.results.map(place => {
-              return <li>{place.name}</li>
-            })
-    
-            this.setState({
-              results: results
-            });
-    
-          });
-    }
-
     saveInput(e) {
         const input = e.target.value;
         this.setState({inputContent: input})
+        this.props.updateSearchTerm(input)
     }
     
     render() {
@@ -57,7 +20,7 @@ class SearchBar extends React.Component {
             <div className="search-bar">
                 <div className="input-group input-group-lg">
                     <span className="input-group-btn">
-                        <button className="btn btn-default" type="button" onClick={this.printInput.bind(this)}>Go!</button>
+                        <button className="btn btn-default" type="button" onClick={this.props.callPlacesServices}>Go!</button>
                     </span>
                     <input 
                         type="text" 

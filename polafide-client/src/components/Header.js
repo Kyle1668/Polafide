@@ -24,7 +24,7 @@ class Header extends React.Component {
                     <div className="header-content">
                         <h1>{this.state.headerText} </h1>
                         <p>{this.state.subHeading} {this.state.leafIcon}</p>
-                        <SearchBar resultsMethod={this.getResults.bind(this)}/>
+                        <SearchBar updateSearchTerm={this.props.updateSearchTerm} callPlacesServices={this.props.callPlacesServices}/>
                     </div>
                 </div>
             </div>
