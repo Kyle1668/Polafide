@@ -19,10 +19,12 @@ class Api::PlacesController < ApplicationController
     end
 
     def build_request_url(location)
-        key = '&key=AIzaSyC_KZyErDtZ42CuFscO2l5YseWaV8MCHrQ&sensor=false'
+        key = '&key=AIzaSyDkaFm1KmYTToZTX8Z2S-Mn9rdblJOk1YY&sensor=false'
         query = 'query=vegan+vegetarian+restaurant+near' + location
-
         request = '/maps/api/place/textsearch/json?'
+
+        puts 'https://maps.googleapis.com' + request + query + key
+
         {
             'site' => 'https://maps.googleapis.com',
             'request' => request + query + key
@@ -78,7 +80,7 @@ class Api::PlacesController < ApplicationController
     end
 
     def get_photo(reference)
-        key = '&key=AIzaSyC_KZyErDtZ42CuFscO2l5YseWaV8MCHrQ'
+        key = '&key=AIzaSyDkaFm1KmYTToZTX8Z2S-Mn9rdblJOk1YY'
         request = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference='
         request + reference + key
     end
