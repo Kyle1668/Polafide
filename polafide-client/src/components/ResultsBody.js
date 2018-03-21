@@ -10,15 +10,36 @@ class ResultsBody extends React.Component {
         }
     }
 
-    render() {   
-        console.log("this.state.results: ", this.state.places)
+    splitPlaces() {
+        const places = this.props.results;
+        let placesRowsArray = [];
+        let placesRow = [];
 
+        for (let i = 0; i < places.length; i++) {
+
+            placesRow.push(places[i])    
+
+            if ((i + 1) % 3 === 0) {
+                placesRowsArray.push(placesRow)
+                placesRow = []
+            }
+            else if (i + 1 === places.length) {
+                placesRowsArray.push(placesRow)
+                break;
+            }
+                    
+        }
+
+        return placesRowsArray.map(places => {
+            return <PlaceRow places = {places}/>
+        });
+    }
+
+    render() {   
         return (
             <div className="results-body">
                 <div className="container">
-                    <PlaceRow places={this.props.results}/>
-                    {/* <PlaceRow names={["place 3", "place 4"]}/>
-                    <PlaceRow names={["place 5", "place 6"]}/> */}
+                    {this.splitPlaces()}
                 </div>
             </div>
         )
