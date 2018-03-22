@@ -32,7 +32,7 @@ class App extends Component {
       
       const url = "https://polafide-search-api.herokuapp.com/api/places?loc=\"" + input + "\"";
 
-      console.log("state input:", input)
+      console.log("State input:", input)
       console.log(url)
 
       fetch(url)
