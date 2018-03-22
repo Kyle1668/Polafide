@@ -133,7 +133,7 @@ DEPENDENCIES
   byebug
   httparty
   listen (~> 3.0.5)
-  pg
+  pg (~> 1.0.0)
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.6)
