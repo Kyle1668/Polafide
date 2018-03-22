@@ -30,7 +30,7 @@ class App extends Component {
 
     if (input != "") {
       
-      const url = "http://localhost:5000/api/places?loc=\"" + input + "\"";
+      const url = "https://polafide-search-api.herokuapp.com/api/places?loc=\"" + input + "\"";
 
       console.log("state input:", input)
       console.log(url)
