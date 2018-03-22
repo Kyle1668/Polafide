@@ -11,9 +11,9 @@ Interested in contributing?
 
 1. Clone this repo.
 2. Install dependencies.
-    * Front End: npm install
-    * Back End: bundle install
-3. Configure to API path to your localhost port for the rails server. (default 3000). 
+    * Front End: `npm install`
+    * Back End: `bundle install`
+3. Configure to API path to your localhost port for the rails server. (default `3000`). 
 4. Register for a Google Places API key.
  
 ######
@@ -53,3 +53,4 @@ Interested in contributing?
 ### Links
   - [Kyle O'Brien Linkedin](www.linkedin.com/in/kyle1668)
   - [Polafide Live on Heroku](https://polafide-client.herokuapp.com/)
+  - [Google Places API](https://developers.google.com/places/)
