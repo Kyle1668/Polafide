@@ -19,7 +19,7 @@ class Api::PlacesController < ApplicationController
     end
 
     def build_request_url(location)
-        key = '&key=AIzaSyDkaFm1KmYTToZTX8Z2S-Mn9rdblJOk1YY&sensor=false'
+        key = '&key=' + ENV["PLACES_API_KEY"] + '&sensor=false'
         query = 'query=vegan+vegetarian+restaurant+near' + location
         request = '/maps/api/place/textsearch/json?'
 
@@ -80,7 +80,7 @@ class Api::PlacesController < ApplicationController
     end
 
     def get_photo(reference)
-        key = '&key=AIzaSyDkaFm1KmYTToZTX8Z2S-Mn9rdblJOk1YY'
+        key = '&key=' + ENV["PLACES_API_KEY"]        
         request = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference='
         request + reference + key
     end
