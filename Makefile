@@ -1,4 +1,4 @@
-github-deploy:
+deploy:
 	cd polafide-client
 	git push heroku master
 	cd ..
