@@ -11,8 +11,12 @@ def hello_world():
 
 @app.route("/api")
 def return_reviews():
-    results = {
-        "company_name": request.args.get("company").replace('"', "").replace("'", "")
-    }
-    return jsonify(results)
+    company_request = request.args.get("company")
+
+    if company_request is None:
+        company_request = "null"
+
+    return jsonify({"company_name": company_request.replace('"', "").replace("'", "")})
+
+
 
