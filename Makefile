@@ -15,3 +15,7 @@ deploy:
 add:
 	git add .
 	git commit -m "Progress"
+
+push:
+	make add
+	git push
