@@ -4,7 +4,7 @@ import PlaceRow from "./PlaceRow";
 class ResultsBody extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             places: this.props.results
         }

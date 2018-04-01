@@ -1,1 +1,3 @@
 ./search-service/config/environment_variables.yml
+.vscode
+.idea
