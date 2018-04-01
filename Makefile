@@ -19,3 +19,7 @@ add:
 push:
 	make add
 	git push
+
+open:
+	heroku open -a polafide-client
+	heroku open -a polafide-search-api
