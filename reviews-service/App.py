@@ -1,8 +1,11 @@
 from flask import Flask
 from flask import request
 from flask import jsonify
+from reviews_service import get_reviews
+
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def hello_world():
@@ -11,12 +14,12 @@ def hello_world():
 
 @app.route("/api")
 def return_reviews():
-    company_request = request.args.get("company")
+    company_name = request.args.get("company")
 
-    if company_request is None:
-        company_request = "null"
+    if company_name is None:
+        return jsonify({"error": "Empty argument"})
 
-    return jsonify({"company_name": company_request.replace('"', "").replace("'", "")})
+    return get_reviews(company_name)
 
 
 
