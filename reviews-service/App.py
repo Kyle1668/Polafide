@@ -12,14 +12,22 @@ def hello_world():
     return "Polafide Reviews Service"
 
 
-@app.route("/api")
+
+@app.route("/api", methods = ["GET"])
 def return_reviews():
-    company_name = request.args.get("company")
+    if request.method == "GET":
+        company_id = request.args.get("placeid")
 
-    if company_name is None:
-        return jsonify({"error": "Empty argument"})
+        if company_id is None:
+            return jsonify({"error": "Empty argument"})
 
-    return get_reviews(company_name)
+        return get_reviews(company_id)
+    else:
+        return "No Get"
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
 
 
 

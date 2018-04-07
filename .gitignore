@@ -1,3 +1,5 @@
 ./search-service/config/environment_variables.yml
 .vscode
 .idea
+reviews-service/keys.json
+reviews-service/__pycache__/
