@@ -1,8 +1,8 @@
-from flask import Flask
-from flask import request
-from flask import jsonify
-from reviews_service import get_reviews
+from flask import Flask, jsonify, request
 
+from reviews_api import get_reviews_from_api
+from reviews_db import (get_reviews_from_db, reviews_already_stored,
+                        save_reviews)
 
 app = Flask(__name__)
 
@@ -12,22 +12,27 @@ def hello_world():
     return "Polafide Reviews Service"
 
 
-
-@app.route("/api", methods = ["GET"])
+@app.route("/api", methods=["GET", "POST"])
 def return_reviews():
-    if request.method == "GET":
-        company_id = request.args.get("placeid")
+    place_id = request.args.get("placeid")
 
-        if company_id is None:
-            return jsonify({"error": "Empty argument"})
-
-        return get_reviews(company_id)
+    if place_id is None:
+        return jsonify({"error": "Empty argument"})
     else:
-        return "No Get"
+        if request.method == "GET":
+            return get_reviews(company_id)
+        else:
+            return jsonify({"error": "Unsupported HTTP Method"})
+
+
+def get_reviews(place_id):
+    if reviews_already_stored(place_id):
+        return get_reviews_from_db(place_id)
+    else:
+        reviews = get_reviews_from_api(place_id)
+        save_reviews(reviews)
+        return reviews
 
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
-
-
-

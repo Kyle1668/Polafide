@@ -11,7 +11,7 @@ def make_request_url(place_id):
     return request_url + id_parameter + key_parameter
 
 
-def get_reviews(place_id):
+def get_reviews_from_api(place_id):
     url = make_request_url(place_id)
     request = requests.get(url).json()
     return jsonify(request["result"]["reviews"])
