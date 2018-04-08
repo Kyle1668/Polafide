@@ -20,18 +20,20 @@ def return_reviews():
         return jsonify({"error": "Empty argument"})
     else:
         if request.method == "GET":
-            return get_reviews(company_id)
+            return get_reviews(place_id)
         else:
             return jsonify({"error": "Unsupported HTTP Method"})
 
 
 def get_reviews(place_id):
     if reviews_already_stored(place_id):
+        print("getting from DB")
         return get_reviews_from_db(place_id)
     else:
+        print("getting from API")
         reviews = get_reviews_from_api(place_id)
         save_reviews(reviews)
-        return reviews
+        return jsonify(reviews)
 
 
 if __name__ == "__main__":

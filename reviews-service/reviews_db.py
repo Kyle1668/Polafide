@@ -1,4 +1,7 @@
+import json
 import pymongo
+from bson import json_util
+from bson.json_util import dumps, loads
 from pymongo import MongoClient
 
 
@@ -10,7 +13,8 @@ mongo_db = {
 
 
 def reviews_already_stored(place_id):
-    return get_reviews_from_db(place_id).count() > 0
+    print(mongo_db["database"]["places_collection"].find(parameter).count() > 1)
+    return mongo_db["database"]["places_collection"].find(parameter).count() > 1
 
 
 def get_reviews_from_db(place_id):
@@ -19,4 +23,5 @@ def get_reviews_from_db(place_id):
 
 
 def save_reviews(place_reviews):
-    mongo_db["database"].insert_one(place_reviews)
+    data = loads(json.dumps(place_reviews))
+    mongo_db["places_collection"].insert_one(data)
