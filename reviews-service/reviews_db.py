@@ -13,10 +13,6 @@ mongo_db = {
 }
 
 
-
-mongo_db["places_collection"].insert_one({"name": "brew", "rating": "great!"})
-
-
 def reviews_already_stored(place_id):
     parameter = {"place_id": place_id}
     print(mongo_db["database"]["places_collection"].find(parameter).count() > 1)
