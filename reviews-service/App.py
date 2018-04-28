@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request
 
 from reviews_api import get_reviews_from_api
-from reviews_db import (get_reviews_from_db, reviews_already_stored,
-                        save_reviews)
+from reviews_db import (get_reviews_from_db,
+                        reviews_already_stored, save_reviews)
 
 app = Flask(__name__)
 
@@ -14,6 +14,12 @@ def hello_world():
 
 @app.route("/api", methods=["GET", "POST"])
 def return_reviews():
+    """[Return the reviews for a specific place]
+
+    Returns:
+        [flask.Response] -- [A flask responce object in JSON format]
+    """
+
     place_id = request.args.get("placeid")
 
     if place_id is None:
@@ -26,6 +32,15 @@ def return_reviews():
 
 
 def get_reviews(place_id):
+    """[Get the reviews for a specific place]
+
+    Arguments:
+        place_id {[str]} -- [A string representing a unique ID of a place]
+
+    Returns:
+        [flask.Response] -- [A flask responce object in JSON format]
+    """
+
     if reviews_already_stored(place_id):
         print("getting from DB")
         return get_reviews_from_db(place_id)
