@@ -1,0 +1,10 @@
+version: "3"
+services:
+  client:
+    build: ./polafide-client
+    ports:
+      - "3000:8080"
+  reviews:
+    build: ./reviews-service
+    ports:
+      - "3001:5000"
