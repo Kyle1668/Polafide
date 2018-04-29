@@ -2,9 +2,20 @@ version: "3"
 services:
   client:
     build: ./polafide-client
+    volumes:
+      - ./polafide-client:app/polafide-client
     ports:
       - "3000:8080"
+  search:
+    build: ./search-service
+    volumes:
+    - ./search-service:app/search-service
+    ports:
+      - "3001:3000"
   reviews:
     build: ./reviews-service
+    volumes:
+    - ./reviews-service:app/reviews-service
     ports:
-      - "3001:5000"
+      - "3002:5000"
+
