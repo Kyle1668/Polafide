@@ -25,12 +25,12 @@ class App extends Component {
   }
 
   callPlacesServices() {
-    
+
     const input = this.state.searchTerm;
 
     if (input != "") {
-      
-      const url = "https://polafide-search-api.herokuapp.com/api/places?loc=\"" + input + "\"";
+
+      const url = "http://localhost:9001/api/places?loc=\"" + input + "\"";
 
       console.log("State input:", input)
       console.log(url)
