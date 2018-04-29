@@ -3,19 +3,19 @@ services:
   client:
     build: ./polafide-client
     volumes:
-      - ./polafide-client:/app/polafide-client
+      - ./polafide-client/:/app
     ports:
       - "9000:8080"
   search:
     build: ./search-service
     volumes:
-      - ./search-service:/app/search-service
+      - ./search-service/:/app
     ports:
       - "9001:3000"
   reviews:
     build: ./reviews-service
     volumes:
-      - ./reviews-service:/app/reviews-service
+      - ./reviews-service/:/app
     ports:
       - "9002:5000"
 
