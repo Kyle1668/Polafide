@@ -9,13 +9,13 @@ services:
   search:
     build: ./search-service
     volumes:
-    - ./search-service:app/search-service
+      - ./search-service:app/search-service
     ports:
       - "3001:3000"
   reviews:
     build: ./reviews-service
     volumes:
-    - ./reviews-service:app/reviews-service
+      - ./reviews-service:app/reviews-service
     ports:
       - "3002:5000"
 
