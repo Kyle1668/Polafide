@@ -23,6 +23,10 @@ class App extends Component {
     }
   }
 
+  getPlacesData() {
+
+  }
+
   callPlacesServices() {
     const input = this.state.searchTerm;
 
@@ -36,6 +40,7 @@ class App extends Component {
         .then(response => response.json())
         .then(json => {
           const results = json.results.map(place => {
+            console.log(place.place_id);
             return <li>{place.name}</li>;
           });
 
