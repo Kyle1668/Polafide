@@ -1,49 +1,66 @@
-import React, {Component} from 'react';
-import Header from "./Header"
+import React, { Component } from "react";
+import Header from "./Header";
 import ResultsBody from "./ResultsBody";
 
-import logo from '../images/logo.svg';
-import '../stylesheets/App.css';
-import '../stylesheets/Header.css';
-import '../stylesheets/SearchBar.css';
-import '../stylesheets/ResultsBody.css';
+import logo from "../images/logo.svg";
+import "../stylesheets/App.css";
+import "../stylesheets/Header.css";
+import "../stylesheets/SearchBar.css";
+import "../stylesheets/ResultsBody.css";
 
 class App extends Component {
-
   constructor() {
-    super()
+    super();
     this.state = {
       searchTerm: "",
       results: []
-    }
+    };
   }
 
   updateSearchTerm(input) {
     if (input !== "") {
-      this.setState({searchTerm: input});
+      this.setState({ searchTerm: input });
     }
   }
 
   callPlacesServices() {
-
     const input = this.state.searchTerm;
 
     if (input != "") {
+      const url = 'http://localhost:9001/api/places?loc="' + input + '"';
 
-      const url = "http://localhost:9001/api/places?loc=\"" + input + "\"";
-
-      console.log("State input:", input)
-      console.log(url)
+      console.log("State input:", input);
+      console.log(url);
 
       fetch(url)
         .then(response => response.json())
         .then(json => {
-
           const results = json.results.map(place => {
-              return <li>{place.name}</li>
+            return <li>{place.name}</li>;
           });
 
-          this.setState({results: json.results});
+          this.setState({ results: json.results });
+        });
+    }
+  }
+
+  callReviewsServices() {
+    const input = this.state.searchTerm;
+
+    if (input != "") {
+      const url = 'http://localhost:9001/api/places?loc="' + input + '"';
+
+      console.log("State input:", input);
+      console.log(url);
+
+      fetch(url)
+        .then(response => response.json())
+        .then(json => {
+          const results = json.results.map(place => {
+            return <li>{place.name}</li>;
+          });
+
+          this.setState({ results: json.results });
         });
     }
   }
@@ -53,8 +70,9 @@ class App extends Component {
       <div className="App">
         <Header
           updateSearchTerm={this.updateSearchTerm.bind(this)}
-          callPlacesServices={this.callPlacesServices.bind(this)}/>
-        <ResultsBody results={this.state.results}/>
+          callPlacesServices={this.callPlacesServices.bind(this)}
+        />
+        <ResultsBody results={this.state.results} />
       </div>
     );
   }
