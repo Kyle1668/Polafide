@@ -12,10 +12,16 @@ services:
       - ./search-service/:/app
     ports:
       - "9001:3000"
+    depends_on:
+      - client
   reviews:
     build: ./reviews-service
     volumes:
       - ./reviews-service/:/app
     ports:
       - "9002:5000"
+    depends_on:
+      - client
+  mongodb:
+    image: mongo:3.0.2
 
