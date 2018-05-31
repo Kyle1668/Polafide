@@ -1,0 +1,10 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.pep8Enabled": false,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": false,
+    "python.linting.pydocstyleEnabled": false,
+    "python.pythonPath": "/Users/kyleobrien/miniconda3/envs/polafide-reviews/bin/python",
+    "python.linting.prospectorEnabled": false
+}
