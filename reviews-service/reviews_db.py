@@ -1,10 +1,12 @@
 import json
+import os
 import pymongo
 from bson import json_util
 from bson.json_util import dumps, loads
 from pymongo import MongoClient
 
-db_uri = json.load(open("keys.json"))["dbURI"]
+db_uri = os.environ.get("DB_URI").replace('"', "")
+
 mongo_client = MongoClient(db_uri)
 
 mongo_db = {

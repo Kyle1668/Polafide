@@ -16,7 +16,7 @@ def make_request_url(place_id):
 
     request_url = "https://maps.googleapis.com/maps/api/place/details/json?"
     id_parameter = "placeid=" + place_id
-    key_parameter = "&key=" + json.load(open("keys.json"))["places"]
+    key_parameter = "&key=" + os.environ.get("PLACES_API_KEY")
     return request_url + id_parameter + key_parameter
 
 

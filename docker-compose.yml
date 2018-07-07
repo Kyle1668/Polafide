@@ -10,6 +10,8 @@ services:
     build: ./search-service
     volumes:
       - ./search-service/:/app
+    environment:
+      - PLACES_API_KEY=""
     ports:
       - "9001:3000"
   reviews:
