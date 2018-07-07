@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 
 from reviews_api import get_reviews_from_api
@@ -52,4 +53,5 @@ def get_reviews(place_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    should_debug = bool(os.environ.get("DEBUG").replace('"', ""))
+    app.run(debug=should_debug, host="0.0.0.0", port=5000)
