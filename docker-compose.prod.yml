@@ -1,0 +1,25 @@
+version: "3"
+services:
+  client:
+    build: ./polafide-client
+    restart: always
+    ports:
+      - "80:8080"
+    environment:
+      - DEBUG='false'
+      - PRODUCTION='true'
+
+  search:
+    build: ./search-service
+    restart: always
+    environment:
+      - DEBUG='false'
+      - PRODUCTION='true'
+      
+  reviews:
+    build: ./reviews-service
+    restart: always
+    environment:
+      - DEBUG='false'
+      - PRODUCTION='true'
+

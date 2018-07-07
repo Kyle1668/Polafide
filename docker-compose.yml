@@ -6,16 +6,29 @@ services:
       - ./polafide-client/:/app
     ports:
       - "9000:8080"
+    environment:
+      - DEBUG='true'
+      - PRODUCTION='false'
+
   search:
     build: ./search-service
     volumes:
       - ./search-service/:/app
     ports:
       - "9001:3000"
+    environment:
+      - DEBUG='true'
+      - PRODUCTION='false'
+      - PLACES_API_KEY="AIzaSyAHCQzjCqUSySu5oHqVO2ex9we9lOe0lQw"
+      
   reviews:
     build: ./reviews-service
     volumes:
       - ./reviews-service/:/app
     ports:
       - "9002:5000"
-
+    environment:
+      - DEBUG='true'
+      - PRODUCTION='false'
+      - PLACES_API_KEY="AIzaSyAHCQzjCqUSySu5oHqVO2ex9we9lOe0lQw"
+      - DB_URI="mongodb://prod_kyle:clipper01@ds151048.mlab.com:51048/polafide-reviews"
