@@ -19,7 +19,7 @@ class Api::PlacesController < ApplicationController
     end
 
     def build_request_url(location)
-        key = '&key=' + ENV["PLACES_API_KEY"] + '&sensor=false'
+        key = '&key=' + ENV["PLACES_API_KEY"].gsub('"', "") + '&sensor=false'
         query = 'query=vegan+vegetarian+restaurant+near' + location
         request = '/maps/api/place/textsearch/json?'
 
@@ -59,7 +59,7 @@ class Api::PlacesController < ApplicationController
         new_place = Place.new()
         new_place.name = json_data['name']
         new_place.address = json_data['formatted_address']
-        
+
         if json_data['photos']
             new_place.image_url = get_photo(json_data['photos'][0]['photo_reference'].to_s)
         else
@@ -70,17 +70,17 @@ class Api::PlacesController < ApplicationController
             new_place.is_open = json_data['opening_hours']['open_now'].to_boolean
         else
             new_place.is_open = nil
-        end 
-        
+        end
+
         new_place.place_id = json_data['place_id']
         new_place.rating = json_data['rating']
         new_place.types = json_data['types'][0]
-        
+
         new_place
     end
 
     def get_photo(reference)
-        key = '&key=' + ENV["PLACES_API_KEY"]        
+        key = '&key=' + ENV["PLACES_API_KEY"].gsub('"', "")
         request = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference='
         request + reference + key
     end
